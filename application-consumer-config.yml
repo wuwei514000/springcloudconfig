@@ -1,0 +1,31 @@
+#配置dev环境
+server:
+  port: 7300
+
+spring:
+  profiles: dev
+  #指定当前微服务暴露的名称
+  application:
+    name: kkbmsc-consumer-feign-depart
+
+#指定rureka中心
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7100.com:7100/eureka
+---
+#配置test环境
+server:
+  port: 7301
+
+spring:
+  profiles: test
+  #指定当前微服务暴露的名称
+  application:
+    name: kkbmsc-consumer-feign-depart
+
+#指定rureka中心
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7101.com:7101/eureka

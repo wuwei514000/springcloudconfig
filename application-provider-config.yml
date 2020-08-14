@@ -1,0 +1,81 @@
+#配置dev环境
+server:
+  port: 7200
+spring:
+  profiles: dev
+  #  指定当前提供者服务的引用名称
+  application:
+    name: kkbmsc-provider-depart
+
+  jpa:
+    #    启动时是否自动建表
+    generate-ddl: true
+    #    在控制台显示sql语句
+    show-sql: true
+    #    设置应用启动时不重新建表
+    hibernate:
+      ddl-auto: none
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/test01?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+logging:
+  pattern:
+    console: level-%level %msg%n
+  level:
+    root: info #springboot启动日志级别
+    org.hibernate: info #hbernate运行日志级别
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+    org.hibernate.hql.internal.ast.exec.BasicExecutor: trace
+    com.kaikeba.provider: debug
+
+#指定eureka注册中心
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7100.com:7100/eureka
+---
+#配置Test环境
+server:
+  port: 7201
+spring:
+  #  指定当前提供者服务的引用名称
+  profiles: test
+  application:
+    name: kkbmsc-provider-depart
+
+  jpa:
+    #    启动时是否自动建表
+    generate-ddl: true
+    #    在控制台显示sql语句
+    show-sql: true
+    #    设置应用启动时不重新建表
+    hibernate:
+      ddl-auto: none
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/test02?useUnicode=true&characterEncoding=UTF-8&serverTimezone=GMT%2B8
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+logging:
+  pattern:
+    console: level-%level %msg%n
+  level:
+    root: info #springboot启动日志级别
+    org.hibernate: info #hbernate运行日志级别
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+    org.hibernate.hql.internal.ast.exec.BasicExecutor: trace
+    com.kaikeba.provider: debug
+
+#指定eureka注册中心
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7101.com:7101/eureka
